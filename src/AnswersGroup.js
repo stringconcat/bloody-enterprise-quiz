@@ -12,7 +12,10 @@ export default function AnswersGroup(props) {
             {
                 props.answers.map(
                     (answerOption, index) => 
-                        <FormControlLabel value={index.toString()} control={<Radio color="primary"/>} label={answerOption.answerText} />
+                        <FormControlLabel 
+                            value={index.toString()} 
+                            control={<Radio color={answerOption.score>0? "primary":"secondary"}/>} 
+                            label={answerOption.answerText} />
                     )
             }
         </RadioGroup>
