@@ -9,6 +9,9 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 export default function App() {
 
@@ -33,8 +36,10 @@ export default function App() {
 					answerText: 'Аналитики запираются в комнате без окон, прорабатывают требования на 2–3 спринта и кидают в разработчиков ТЗ', 
 					score: 0 
 				},
-				{ answerText: 'Аналитики и разработчики сообща работают в спринте над реализацией. Постановки не высечены в камне и изменяются после обсуждения с инженерами', 
-				score: 2 },
+				{ 
+					answerText: 'Аналитики и разработчики сообща работают в спринте над реализацией. Постановки не высечены в камне и изменяются после обсуждения с инженерами', 
+					score: 2 
+				},
 			],
 			description: `В первую очередь проверьте компанию на водопадность.
 			Даже самая распоследняя водопадная компания вам ни за что не скажет, что работает по водопаду. Сейчас весь мир agile. Но есть пропасть между be agile и do agile. И только в be agile командах у вас может появиться возможность комфортно писать качественный софт и влиять на решения, а не просто реализовывать ТЗ.
@@ -54,28 +59,38 @@ export default function App() {
 			`
 		},
 		{
-			questionText: 'The iPhone was created by which company?',
+			questionText: 'Как фиксируются принятые архитектурные решения',
 			answerOptions: [
-				{ answerText: 'Apple', score: 1 },
-				{ answerText: 'Intel', score: 0 },
-				{ answerText: 'Amazon', score: 0 },
-				{ answerText: 'Microsoft', score: 0 },
+				{ answerText: 'В Architectural Decision Record фиксируются все «Почему» ', score: 2 },
+				{ answerText: 'В таск-трекере заводят задачи, в которых расписаны все «Как». Например, прикрутить kafka', score: 0 },
+				{ answerText: 'Решения не фиксируются', score: 0 },
 			],
+			description: `Плохо дело, когда команда не может вспомнить, почему выбрали MongoDB или куда-то натыкали микросервисов. Так «исторически сложилось» или тимлид принёс с последней high-load конференции, но суть в том, что никто не вспомнит, на основании чего принимались решения.
+			Без понимания причин команда обречена ходить по кругу, как в кино про день сурка. Монолит → распределенная структура  → монолит, и так, пока все не выгорят.
+			Зрелые команды ведут Architectural Decision Records, в которых фиксируют значимые архитектурные решения, их причины, альтернативы, плюсы и минусы.
+			Таски в Jira для этого плохо подходят. В них редко записывают результат исследования и причины изменений. А сами таски часто теряются. Попробуйте найти задачу, закрытую два года назад.
+			`
 		},
 		{
-			questionText: 'How many Harry Potter books are there?',
+			questionText: 'Можно ли начать полноценно разрабатывать в первый же рабочий день?',
 			answerOptions: [
-				{ answerText: '1', score: 0 },
-				{ answerText: '4', score: 0 },
-				{ answerText: '6', score: 0 },
-				{ answerText: '7', score: 1 },
+				{ answerText: 'Да, команда выдаст доступы, можно тут же развернуть и запустить проект ', score: 2 },
+				{ answerText: 'Нет, весь первый день уйдёт на бумажки и получение доступов', score: 0 },
 			],
+			description: `Вопрос помогает оценить степень бюрократии на проекте и производственную культуру. 
+			Если заведение всех нужных учёток занимает недели, представьте, что там у них с другими процессами.
+			Скорость и простота развертывания тоже много вам скажут.
+			Например, тимлид хвастается, что у них такой большой и важный проект, что его нельзя просто так взять и развернуть. У новичка на это уходит три дня, а у гениального новичка — всего два.
+			Но три дня на развертывание говорят только о том, что тимлид не понимает своей основной задачи — упрощать работу разработчиков.
+			Любой проект должен собираться и запускаться по одной команде. Если вместо кнопки длинный readme по запуску, поздравляю, вы нашли зону роста. Конвертируйте readme в bash-скрипт.
+			`
 		},
 	];
 
 	const useStyles = makeStyles({
 		root: {
 		  minWidth: 275,
+		  flexGrow: 1,
 		},
 		bullet: {
 		  display: 'inline-block',
@@ -88,8 +103,14 @@ export default function App() {
 		pos: {
 		  marginBottom: 12,
 		},
+		paper: {
+			height: 140,
+			width: 100,
+		},
+		// control: {
+		// 	padding: theme.spacing(2),
+		// },
 	  });
-	const classes = useStyles();
 
 	const handleNextQuestionButton = (scoreFortheAnswer) => {
 		const currentAnswerScore = questions[currentQuestion].answerOptions[currentAnswerIndex].score
@@ -110,39 +131,64 @@ export default function App() {
 	  };
 
 	return (
-		<div className='app'>
-			{showScore ? (
-				<div className='score-section'>You scored {score} out of {questions.length}</div>
-			) : (
-				<>
-					<FormControl component="fieldset">
-					<FormLabel component="legend">{questions[currentQuestion].questionText } ({currentQuestion + 1}/{questions.length})</FormLabel>
-					<RadioGroup aria-label="anwers" name="answers" value={currentAnswerIndex} onChange={handleAnswerChange}>
-						{
-							questions[currentQuestion].answerOptions.map(
-								(answerOption, index) => 
-									<FormControlLabel value={index.toString()} control={<Radio />} label={answerOption.answerText} />
-								)
-						}
+		<Grid
+			container
+			direction="row"
+			justifyContent="center"
+		>
+		<Grid
+			container
+			spacing="3"
+			direction="column"
+			justifyContent="flex-start"
+			alignItems="stretch"
+			item xs={6}
+		>
+			<Grid item>
+				<Typography variant="h2" gutterBottom>{
+					questions[currentQuestion].questionText } ({currentQuestion + 1}/{questions.length})
+				</Typography>
+			</Grid>	
+			<Grid item>
+				{showScore ? (
+					<div className='score-section'>You scored {score} out of {questions.length}</div>
+				) : (
+					<>
+						<FormControl component="fieldset">
+						<RadioGroup aria-label="anwers" name="answers" value={currentAnswerIndex} onChange={handleAnswerChange}>
+							{
+								questions[currentQuestion].answerOptions.map(
+									(answerOption, index) => 
+										<FormControlLabel value={index.toString()} control={<Radio />} label={answerOption.answerText} />
+									)
+							}
 
-					</RadioGroup>
-					</FormControl>
-					{currentAnswerIndex !== -1 ? (
-						<>
-							<Card className={classes.root}>
-								<CardContent>
-								<Typography className={classes.title} color="textSecondary" gutterBottom>
-									{questions[currentQuestion].description }
-								</Typography>
-								</CardContent>
-							</Card>
-						
-							<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
-						</>
+						</RadioGroup>
+						</FormControl>
+					</>
+				)}
+			</Grid>	
+			<Grid item>
+				{currentAnswerIndex !== -1 ? (
+
+				<Card className={useState.root} variant="outlined">
+				<CardContent>
+					<Typography  variant="body1" gutterBottom>
+						{questions[currentQuestion].description }
+					</Typography>
+				</CardContent>
+				</Card>	
+
+			) : (<></>) 
+			}
+			</Grid>
+			<Grid item>
+				{currentAnswerIndex !== -1 ? (
+					<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
 					) : (<></>) 
-					} 
-				</>
-			)}
-		</div>
+				}
+			</Grid>
+		</Grid>
+		</Grid>
 	);
 }
