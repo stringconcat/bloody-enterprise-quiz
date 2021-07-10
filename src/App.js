@@ -127,16 +127,20 @@ export default function App() {
 
 					</RadioGroup>
 					</FormControl>
-					
-					<Card cclassName={classes.root}>
-      				<CardContent>
-						<Typography className={classes.title} color="textSecondary" gutterBottom>
-							{questions[currentQuestion].description }
-						</Typography>
-					</CardContent>
-					</Card>
-					
-					<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+					{currentAnswerIndex !== -1 ? (
+						<>
+							<Card className={classes.root}>
+								<CardContent>
+								<Typography className={classes.title} color="textSecondary" gutterBottom>
+									{questions[currentQuestion].description }
+								</Typography>
+								</CardContent>
+							</Card>
+						
+							<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+						</>
+					) : (<></>) 
+					} 
 				</>
 			)}
 		</div>
