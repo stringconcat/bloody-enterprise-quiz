@@ -7,6 +7,7 @@ import {
   
 import QuizzPage from './QuizPage';
 import IntroPage from './IntroPage';
+import ScorePage from './ScorePage';
 
 export default function App() {
 
@@ -17,6 +18,9 @@ export default function App() {
 		  <Switch>
 			<Route path="/quiz">
 			  <QuizzPage />
+			</Route>
+			<Route path="/score">
+			  <ScorePage />
 			</Route>
 			<Route path="/">
 			  <IntroPage />

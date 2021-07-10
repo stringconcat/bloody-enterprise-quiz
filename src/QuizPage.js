@@ -5,6 +5,7 @@ import { questions } from './Questions';
 import DescriptionBox from './DescriptionBox';
 import QuestionBox from './QuestionBox';
 import AnswersGroup from './AnswersGroup';
+import { Redirect } from 'react-router';
 
 export default function QuizzPage() {
 
@@ -55,7 +56,7 @@ export default function QuizzPage() {
 
 				<Grid item>
 					{showScore ? (
-						<div className='score-section'>You scored {score} out of {questions.length}</div>
+						 <Redirect to="/score"/>
 					) : (
 						<AnswersGroup 
 							onChange={handleAnswerChange}
