@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '@material-ui/core';
 
 export default function App() {
 
@@ -72,7 +73,7 @@ export default function App() {
 						{
 							questions[currentQuestion].answerOptions.map(
 								(answerOption, index) => 
-								<button onClick={() => handleAnswerButtonClick(answerOption.score)}>{answerOption.answerText}</button>
+								<Button onClick={() => handleAnswerButtonClick(answerOption.score)}>{answerOption.answerText}</Button>
 							)
 						}
 					</div>
