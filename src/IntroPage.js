@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -39,7 +39,7 @@ export default function IntroPage() {
 				</Grid>	
 
                 <Grid item>
-					<Button variant="outlined" color="primary">Начать</Button>
+					<Button variant="outlined" color="primary" href="/quiz">Начать</Button>
 				</Grid>
 
 			</Grid>
