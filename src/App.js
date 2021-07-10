@@ -10,45 +10,43 @@ export default function App() {
 		{
 			questionText: 'What is the capital of France?',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
+				{ answerText: 'New York', score: 0 },
+				{ answerText: 'London', score: 0 },
+				{ answerText: 'Paris', score: 1 },
+				{ answerText: 'Dublin', score: 0 },
 			],
 		},
 		{
 			questionText: 'Who is CEO of Tesla?',
 			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
+				{ answerText: 'Jeff Bezos', score: 0 },
+				{ answerText: 'Elon Musk', score: 1 },
+				{ answerText: 'Bill Gates', score: 0 },
+				{ answerText: 'Tony Stark', score: 0 },
 			],
 		},
 		{
 			questionText: 'The iPhone was created by which company?',
 			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
+				{ answerText: 'Apple', score: 1 },
+				{ answerText: 'Intel', score: 0 },
+				{ answerText: 'Amazon', score: 0 },
+				{ answerText: 'Microsoft', score: 0 },
 			],
 		},
 		{
 			questionText: 'How many Harry Potter books are there?',
 			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
+				{ answerText: '1', score: 0 },
+				{ answerText: '4', score: 0 },
+				{ answerText: '6', score: 0 },
+				{ answerText: '7', score: 1 },
 			],
 		},
 	];
 
-	const handleAnswerButtonClick = (isCorrect) => {
-		if (isCorrect) {
-			setScore(score+1)
-		}
+	const handleAnswerButtonClick = (scoreFortheAnswer) => {
+		setScore(score + scoreFortheAnswer)
 		const nextQeustion = currentQuestion + 1;
 		if (nextQeustion < questions.length) {
 			setCurrentQuestion(nextQeustion)
@@ -74,7 +72,7 @@ export default function App() {
 						{
 							questions[currentQuestion].answerOptions.map(
 								(answerOption, index) => 
-								<button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+								<button onClick={() => handleAnswerButtonClick(answerOption.score)}>{answerOption.answerText}</button>
 							)
 						}
 					</div>
