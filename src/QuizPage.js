@@ -7,7 +7,7 @@ import QuestionBox from './QuestionBox';
 import AnswersGroup from './AnswersGroup';
 import { Redirect } from 'react-router';
 
-export default function QuizzPage() {
+export default function QuizzPage(props) {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showScore, setShowScore] = useState(false);
@@ -16,7 +16,9 @@ export default function QuizzPage() {
 
 	const handleNextQuestionButton = (scoreFortheAnswer) => {
 		const currentAnswerScore = questions[currentQuestion].answerOptions[currentAnswerIndex].score
-		setScore(score + currentAnswerScore)
+        const newScore = score + currentAnswerScore
+		setScore(newScore)
+        props.updateScore(newScore)
 
 		const nextQeustion = currentQuestion + 1;
 		if (nextQeustion < questions.length) {
