@@ -10,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { questions } from './Questions';
+import DescriptionBox from './DescriptionBox';
 
 export default function App() {
 
@@ -101,15 +102,7 @@ export default function App() {
 			</Grid>	
 			<Grid item>
 				{currentAnswerIndex !== -1 ? (
-
-				<Card className={useState.root} variant="outlined">
-				<CardContent>
-					<Typography  variant="body1" gutterBottom>
-						{questions[currentQuestion].description }
-					</Typography>
-				</CardContent>
-				</Card>	
-
+				<DescriptionBox description={questions[currentQuestion].description} />
 			) : (<></>) 
 			}
 			</Grid>
