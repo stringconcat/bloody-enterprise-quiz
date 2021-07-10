@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { questions } from './Questions';
 import DescriptionBox from './DescriptionBox';
@@ -13,28 +12,6 @@ export default function App() {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0)
 	const [currentAnswerIndex, setCurrentAnswerIndex] = useState(-1)
-
-	const useStyles = makeStyles({
-		root: {
-		  minWidth: 275,
-		  flexGrow: 1,
-		},
-		bullet: {
-		  display: 'inline-block',
-		  margin: '0 2px',
-		  transform: 'scale(0.8)',
-		},
-		title: {
-		  fontSize: 14,
-		},
-		pos: {
-		  marginBottom: 12,
-		},
-		paper: {
-			height: 140,
-			width: 100,
-		},
-	  });
 
 	const handleNextQuestionButton = (scoreFortheAnswer) => {
 		const currentAnswerScore = questions[currentQuestion].answerOptions[currentAnswerIndex].score
