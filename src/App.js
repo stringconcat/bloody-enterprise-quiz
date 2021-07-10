@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { questions } from './Questions';
 import DescriptionBox from './DescriptionBox';
+import QuestionBox from './QuestionBox';
+import AnswersGroup from './AnswersGroup';
 
 export default function App() {
 
@@ -39,9 +34,6 @@ export default function App() {
 			height: 140,
 			width: 100,
 		},
-		// control: {
-		// 	padding: theme.spacing(2),
-		// },
 	  });
 
 	const handleNextQuestionButton = (scoreFortheAnswer) => {
@@ -66,53 +58,50 @@ export default function App() {
 		<Grid
 			container
 			direction="row"
-			justifyContent="center"
-		>
-		<Grid
-			container
-			spacing="3"
-			direction="column"
-			justifyContent="flex-start"
-			alignItems="stretch"
-			item xs={6}
-		>
-			<Grid item>
-				<Typography variant="h2" gutterBottom>{
-					questions[currentQuestion].questionText } ({currentQuestion + 1}/{questions.length})
-				</Typography>
-			</Grid>	
-			<Grid item>
-				{showScore ? (
-					<div className='score-section'>You scored {score} out of {questions.length}</div>
-				) : (
-					<>
-						<FormControl component="fieldset">
-						<RadioGroup aria-label="anwers" name="answers" value={currentAnswerIndex} onChange={handleAnswerChange}>
-							{
-								questions[currentQuestion].answerOptions.map(
-									(answerOption, index) => 
-										<FormControlLabel value={index.toString()} control={<Radio />} label={answerOption.answerText} />
-									)
-							}
+			justifyContent="center">
 
-						</RadioGroup>
-						</FormControl>
-					</>
-				)}
-			</Grid>	
-			<Grid item>
-				{currentAnswerIndex !== -1 ? (
-				<DescriptionBox description={questions[currentQuestion].description} />
-			) : (<></>) 
-			}
-			</Grid>
-			<Grid item>
-				{currentAnswerIndex !== -1 ? (
-					<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
-					) : (<></>) 
+			<Grid
+				container
+				spacing="3"
+				direction="column"
+				justifyContent="flex-start"
+				alignItems="stretch"
+				item xs={6}>
+
+				<Grid item>
+					<QuestionBox 
+						text={questions[currentQuestion].questionText}
+						currentIndex={currentQuestion}
+						totalQuestions={questions.length}
+						/>
+				</Grid>	
+
+				<Grid item>
+					{showScore ? (
+						<div className='score-section'>You scored {score} out of {questions.length}</div>
+					) : (
+						<AnswersGroup 
+							onChange={handleAnswerChange}
+							answers={questions[currentQuestion].answerOptions}
+							currentAnswerIndex={currentAnswerIndex}
+						/>
+					)}
+				</Grid>	
+
+				<Grid item>
+					{currentAnswerIndex !== -1 ? (
+					<DescriptionBox description={questions[currentQuestion].description} />
+				) : (<></>) 
 				}
+				</Grid>
+
+				<Grid item>
+					{currentAnswerIndex !== -1 ? (
+						<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+						) : (<></>) 
+					}
+				</Grid>
 			</Grid>
-		</Grid>
 		</Grid>
 	);
 }
