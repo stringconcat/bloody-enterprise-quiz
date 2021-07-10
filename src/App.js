@@ -101,6 +101,7 @@ export default function App() {
 		} else {
 			setShowScore(true)
 		}
+		setCurrentAnswerIndex(-1)
 	}
 
 
