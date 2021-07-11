@@ -32,7 +32,7 @@ function Copyright() {
 
 	return (
 		<footer className={classes.footer}>
-		<Container maxWidth="sm">
+		<Container maxWidth="md">
 		  <Typography variant="body1">Сделано с любовью</Typography>
 		  <Copyright />
 		</Container>

@@ -38,7 +38,7 @@ export default function App() {
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
-			<Container component="main" className={classes.main} maxWidth="sm">
+			<Container component="main" className={classes.main} maxWidth="md">
 				<Grid container spacing="3" direction="column" justifyContent="flex-start" alignItems="stretch">
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
