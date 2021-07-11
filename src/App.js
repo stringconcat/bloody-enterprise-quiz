@@ -47,7 +47,7 @@ export default function App() {
 							<	QuizzPage updateScore={setScore} />
 							</Route>
 							<Route path="/score">
-								<ScorePage score={score} maximum={32}/>
+								<ScorePage score={score} maximum={34}/>
 							</Route>
 							<Route path="/score2">
 								<VerticalLinearStepper></VerticalLinearStepper>

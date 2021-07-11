@@ -10,15 +10,13 @@ export default function ScorePage(props) {
         <>
             <Grid item>
                 <Typography variant="subtitle1" gutterBottom>
-                    Таки все
-                </Typography>
-                <Typography variant="h3" gutterBottom>
                     Результаты
                 </Typography>
+                <Typography variant="h3" gutterBottom>
+                    Вы набрали {props.score} из {props.maximum}
+                </Typography>
             </Grid>	
-            <Grid item>
-                Вы набрали {props.score} из {props.maximum}
-            </Grid>
+            
             <Grid item>
                 <ScoreStepper score = {props.score}></ScoreStepper>
             </Grid>	
