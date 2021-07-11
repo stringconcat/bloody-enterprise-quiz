@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/bloody-enterprise-quiz/static/js/main.8942ed72.chunk.js",
-    "main.js.map": "/bloody-enterprise-quiz/static/js/main.8942ed72.chunk.js.map",
+    "main.js": "/bloody-enterprise-quiz/static/js/main.6ff64b9c.chunk.js",
+    "main.js.map": "/bloody-enterprise-quiz/static/js/main.6ff64b9c.chunk.js.map",
     "runtime-main.js": "/bloody-enterprise-quiz/static/js/runtime-main.3962db08.js",
     "runtime-main.js.map": "/bloody-enterprise-quiz/static/js/runtime-main.3962db08.js.map",
-    "static/js/2.adaab319.chunk.js": "/bloody-enterprise-quiz/static/js/2.adaab319.chunk.js",
-    "static/js/2.adaab319.chunk.js.map": "/bloody-enterprise-quiz/static/js/2.adaab319.chunk.js.map",
+    "static/js/2.63ffabd0.chunk.js": "/bloody-enterprise-quiz/static/js/2.63ffabd0.chunk.js",
+    "static/js/2.63ffabd0.chunk.js.map": "/bloody-enterprise-quiz/static/js/2.63ffabd0.chunk.js.map",
     "index.html": "/bloody-enterprise-quiz/index.html",
-    "precache-manifest.e3d89a88303ead68aeb8b2514ad9008a.js": "/bloody-enterprise-quiz/precache-manifest.e3d89a88303ead68aeb8b2514ad9008a.js",
+    "precache-manifest.41ccfb8c94621af5bc23bf2fa6fbb38d.js": "/bloody-enterprise-quiz/precache-manifest.41ccfb8c94621af5bc23bf2fa6fbb38d.js",
     "service-worker.js": "/bloody-enterprise-quiz/service-worker.js",
-    "static/js/2.adaab319.chunk.js.LICENSE.txt": "/bloody-enterprise-quiz/static/js/2.adaab319.chunk.js.LICENSE.txt"
+    "static/js/2.63ffabd0.chunk.js.LICENSE.txt": "/bloody-enterprise-quiz/static/js/2.63ffabd0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3962db08.js",
-    "static/js/2.adaab319.chunk.js",
-    "static/js/main.8942ed72.chunk.js"
+    "static/js/2.63ffabd0.chunk.js",
+    "static/js/main.6ff64b9c.chunk.js"
   ]
 }
