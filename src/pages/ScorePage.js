@@ -3,6 +3,8 @@ import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ScoreStepper from '../quiz/ScoreStepper';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 export default function ScorePage(props) {
 
@@ -16,15 +18,25 @@ export default function ScorePage(props) {
                     Вы набрали {props.score} из {props.maximum}
                 </Typography>
             </Grid>	
-            
+
             <Grid item>
                 <ScoreStepper score = {props.score}></ScoreStepper>
             </Grid>	
 
             <Grid item>
-                <Button variant="outlined" color="primary" href="https://howto.stringconcat.com/">Курс</Button>
+                <Typography variant="body1" gutterBottom>
+                    Мотивация
+                </Typography>
+            </Grid>	
+
+            <Grid item container spacing={3}>
+                <Grid item xs={12} md={6}>
+                    <Button variant="outlined" color="primary" href="https://howto.stringconcat.com/">Узнать как перейти на следующую ступень</Button>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Button variant="outlined" href='#/quiz'>Пройти тест заново</Button>
+                </Grid>
             </Grid>
         </>
-
 	);
 }
