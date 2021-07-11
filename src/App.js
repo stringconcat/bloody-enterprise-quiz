@@ -36,21 +36,22 @@ export default function App() {
 
 	const [score, setScore] = useState(0)
 
+	const changeScoreBy = (number) => {
+		setScore(score+number)
+	}
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
 			<Container component="main" className={classes.main} maxWidth="md">
-				<Grid container spacing="3" direction="column" justifyContent="flex-start" alignItems="stretch">
+				<Grid container spacing={2} direction="column" justifyContent="flex-start" alignItems="stretch">
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
 							<Route path="/quiz">
-							<	QuizzPage updateScore={setScore} />
+								<QuizzPage updateScore={changeScoreBy} />
 							</Route>
 							<Route path="/score">
 								<ScorePage score={score} maximum={34}/>
-							</Route>
-							<Route path="/score2">
-								<VerticalLinearStepper></VerticalLinearStepper>
 							</Route>
 							<Route exactPath="/">
 								<IntroPage />

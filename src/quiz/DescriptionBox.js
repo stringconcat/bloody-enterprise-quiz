@@ -8,11 +8,11 @@ export default function DescriptionBox(props) {
 
     return (
         <Card variant="outlined">
-        <CardContent>
-            <Typography  variant="body1" gutterBottom>
-                {ReactHtmlParser(props.description)}
-            </Typography>
-        </CardContent>
-        </Card>	
+            <CardContent>
+                <Typography variant="body1" gutterBottom>
+                    {ReactHtmlParser(props.description)}
+                </Typography>
+            </CardContent>
+        </Card>
     );
 }

@@ -1,75 +1,78 @@
-import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import React, {useState} from 'react';
+import {Button} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { questions } from '../Questions';
+import {questions} from '../Questions';
 import DescriptionBox from '../quiz/DescriptionBox';
 import QuestionBox from '../quiz/QuestionBox';
-import AnswersGroup from '../quiz/AnswersGroup';
+import SingleAnswerGroup from '../quiz/SingleAnswerGroup';
+import MultiAnswerGroup from '../quiz/MultiAnswerGroup';
 
 export default function QuizzPage(props) {
 
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [score, setScore] = useState(0)
-	const [currentAnswerIndex, setCurrentAnswerIndex] = useState(-1)
+    const [currentQuestionIndex, setCurrentQuestion] = useState(0);
+    const [currentAnswerIndex, setCurrentAnswerIndex] = useState(-1)
 
-	const handleNextQuestionButton = (scoreFortheAnswer) => {
-		const currentAnswerScore = questions[currentQuestion].answerOptions[currentAnswerIndex].score
-        const newScore = score + currentAnswerScore
-		setScore(newScore)
-        props.updateScore(newScore)
+    const handleNextQuestionButton = () => {
+        const currentAnswerScore = questions[currentQuestionIndex].answerOptions[currentAnswerIndex].score
+        props.updateScore(currentAnswerScore)
 
-		const nextQeustion = currentQuestion + 1;
-		if (nextQeustion < questions.length) {
-			setCurrentQuestion(nextQeustion)
-		}
+        if (!isTheLastQuestion(currentQuestionIndex)) {
+            setCurrentQuestion(currentQuestionIndex + 1)
+        }
 
-		setCurrentAnswerIndex(-1)
-	}
+        setCurrentAnswerIndex(-1)
+    }
 
 
-	  const handleAnswerChange = (event) => {
-		setCurrentAnswerIndex(event.target.value)
-	  };
+    const handleAnswerChange = (event) => {
+        setCurrentAnswerIndex(event.target.value)
+    };
 
     function isTheLastQuestion() {
-        return currentQuestion + 1 === questions.length
-    }  
+        return currentQuestionIndex + 1 === questions.length
+    }
 
-	return (
-		<>
-			<Grid item>
-				<QuestionBox 
-					text={questions[currentQuestion].questionText}
-					currentIndex={currentQuestion}
-					totalQuestions={questions.length}
-				/>
-			</Grid>	
+    return (
+        <>
+            <Grid item>
+                <QuestionBox
+                    text={questions[currentQuestionIndex].questionText}
+                    currentIndex={currentQuestionIndex}
+                    totalQuestions={questions.length}
+                />
+            </Grid>
 
-			<Grid item>
-				<AnswersGroup 
-					onChange={handleAnswerChange}
-					answers={questions[currentQuestion].answerOptions}
-					currentAnswerIndex={currentAnswerIndex}
-				/>
-			</Grid>	
+            <Grid item>
+                <SingleAnswerGroup
+                    onChange={handleAnswerChange}
+                    answers={questions[currentQuestionIndex].answerOptions}
+                    currentAnswerIndex={currentAnswerIndex}
+                />
+                {/*<MultiAnswerGroup*/}
+                {/*	onChange={handleAnswerChange}*/}
+                {/*	answers={questions[currentQuestionIndex].answerOptions}*/}
+                {/*	currentAnswerIndex={currentAnswerIndex}*/}
+                {/*/>*/}
+            </Grid>
 
-			<Grid item>
-				{currentAnswerIndex !== -1 ? (
-				<DescriptionBox description={questions[currentQuestion].description} />
-			) : (<></>) 
-			}
-			</Grid>
+            <Grid item>
+                {currentAnswerIndex !== -1 ? (
+                    <DescriptionBox description={questions[currentQuestionIndex].description}/>
+                ) : (<></>)
+                }
+            </Grid>
 
-			<Grid item>
-				{currentAnswerIndex !== -1 ? (
-					!isTheLastQuestion() ? (
-						<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
-					) : (
-						<Button variant="outlined" color="primary" href="#/score">Результаты</Button>
-					)
-					) : (<></>) 
-				}
-			</Grid>
-		</>
-	);
+            <Grid item>
+                {currentAnswerIndex !== -1 ? (
+                    !isTheLastQuestion() ? (
+                        <Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий
+                            вопрос</Button>
+                    ) : (
+                        <Button variant="outlined" color="primary" href="#/score">Результаты</Button>
+                    )
+                ) : (<></>)
+                }
+            </Grid>
+        </>
+    );
 }
