@@ -8,12 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Footer from './Footer';  
+import Footer from './layout/Footer';  
 
 
-import QuizzPage from './QuizPage';
-import IntroPage from './IntroPage';
-import ScorePage from './ScorePage';
+import QuizzPage from './pages/QuizPage';
+import IntroPage from './pages/IntroPage';
+import ScorePage from './pages/ScorePage';
 
 
 const useStyles = makeStyles((theme) => ({

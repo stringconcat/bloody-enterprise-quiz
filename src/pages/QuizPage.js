@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { questions } from './Questions';
-import DescriptionBox from './DescriptionBox';
-import QuestionBox from './QuestionBox';
-import AnswersGroup from './AnswersGroup';
+import { questions } from '../Questions';
+import DescriptionBox from '../quiz/DescriptionBox';
+import QuestionBox from '../quiz/QuestionBox';
+import AnswersGroup from '../quiz/AnswersGroup';
 
 export default function QuizzPage(props) {
 
