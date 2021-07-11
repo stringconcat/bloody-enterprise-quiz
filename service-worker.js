@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bloody-enterprise-quiz/precache-manifest.6823d5d2793d4c70247a07f493a15299.js"
+  "/bloody-enterprise-quiz/precache-manifest.e3d89a88303ead68aeb8b2514ad9008a.js"
 );
 
 self.addEventListener('message', (event) => {
