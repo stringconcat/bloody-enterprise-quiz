@@ -3,8 +3,6 @@ import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ScoreStepper from '../quiz/ScoreStepper';
-import { makeStyles } from '@material-ui/core/styles';
-
 
 export default function ScorePage(props) {
 
