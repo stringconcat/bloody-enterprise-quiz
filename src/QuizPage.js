@@ -5,7 +5,6 @@ import { questions } from './Questions';
 import DescriptionBox from './DescriptionBox';
 import QuestionBox from './QuestionBox';
 import AnswersGroup from './AnswersGroup';
-import { Redirect } from 'react-router';
 
 export default function QuizzPage(props) {
 
@@ -37,53 +36,40 @@ export default function QuizzPage(props) {
     }  
 
 	return (
-		<Grid
-			container
-			direction="row"
-			justifyContent="center">
+		<>
+			<Grid item>
+				<QuestionBox 
+					text={questions[currentQuestion].questionText}
+					currentIndex={currentQuestion}
+					totalQuestions={questions.length}
+				/>
+			</Grid>	
 
-			<Grid
-				container
-				spacing="3"
-				direction="column"
-				justifyContent="flex-start"
-				alignItems="stretch"
-				item xs={6}>
+			<Grid item>
+				<AnswersGroup 
+					onChange={handleAnswerChange}
+					answers={questions[currentQuestion].answerOptions}
+					currentAnswerIndex={currentAnswerIndex}
+				/>
+			</Grid>	
 
-				<Grid item>
-					<QuestionBox 
-						text={questions[currentQuestion].questionText}
-						currentIndex={currentQuestion}
-						totalQuestions={questions.length}
-					/>
-				</Grid>	
-
-				<Grid item>
-                    <AnswersGroup 
-                        onChange={handleAnswerChange}
-                        answers={questions[currentQuestion].answerOptions}
-                        currentAnswerIndex={currentAnswerIndex}
-                    />
-				</Grid>	
-
-				<Grid item>
-					{currentAnswerIndex !== -1 ? (
-					<DescriptionBox description={questions[currentQuestion].description} />
-				) : (<></>) 
-				}
-				</Grid>
-
-				<Grid item>
-					{currentAnswerIndex !== -1 ? (
-                        !isTheLastQuestion() ? (
-						    <Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
-                        ) : (
-                            <Button variant="outlined" color="primary" href="#/score">Результаты</Button>
-                        )
-						) : (<></>) 
-					}
-				</Grid>
+			<Grid item>
+				{currentAnswerIndex !== -1 ? (
+				<DescriptionBox description={questions[currentQuestion].description} />
+			) : (<></>) 
+			}
 			</Grid>
-		</Grid>
+
+			<Grid item>
+				{currentAnswerIndex !== -1 ? (
+					!isTheLastQuestion() ? (
+						<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+					) : (
+						<Button variant="outlined" color="primary" href="#/score">Результаты</Button>
+					)
+					) : (<></>) 
+				}
+			</Grid>
+		</>
 	);
 }
