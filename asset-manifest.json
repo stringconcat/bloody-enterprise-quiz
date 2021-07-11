@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/.github.io/%7Bbloody-enterprise-quiz/static/js/main.9d2beb83.chunk.js",
-    "main.js.map": "/.github.io/%7Bbloody-enterprise-quiz/static/js/main.9d2beb83.chunk.js.map",
-    "runtime-main.js": "/.github.io/%7Bbloody-enterprise-quiz/static/js/runtime-main.0f9e17d1.js",
-    "runtime-main.js.map": "/.github.io/%7Bbloody-enterprise-quiz/static/js/runtime-main.0f9e17d1.js.map",
-    "static/js/2.77461ae6.chunk.js": "/.github.io/%7Bbloody-enterprise-quiz/static/js/2.77461ae6.chunk.js",
-    "static/js/2.77461ae6.chunk.js.map": "/.github.io/%7Bbloody-enterprise-quiz/static/js/2.77461ae6.chunk.js.map",
-    "index.html": "/.github.io/%7Bbloody-enterprise-quiz/index.html",
-    "precache-manifest.b20282f46feb60afeac1cc4d972f38b4.js": "/.github.io/%7Bbloody-enterprise-quiz/precache-manifest.b20282f46feb60afeac1cc4d972f38b4.js",
-    "service-worker.js": "/.github.io/%7Bbloody-enterprise-quiz/service-worker.js",
-    "static/js/2.77461ae6.chunk.js.LICENSE.txt": "/.github.io/%7Bbloody-enterprise-quiz/static/js/2.77461ae6.chunk.js.LICENSE.txt"
+    "main.js": "/bloody-enterprise-quiz/static/js/main.9d2beb83.chunk.js",
+    "main.js.map": "/bloody-enterprise-quiz/static/js/main.9d2beb83.chunk.js.map",
+    "runtime-main.js": "/bloody-enterprise-quiz/static/js/runtime-main.3962db08.js",
+    "runtime-main.js.map": "/bloody-enterprise-quiz/static/js/runtime-main.3962db08.js.map",
+    "static/js/2.77461ae6.chunk.js": "/bloody-enterprise-quiz/static/js/2.77461ae6.chunk.js",
+    "static/js/2.77461ae6.chunk.js.map": "/bloody-enterprise-quiz/static/js/2.77461ae6.chunk.js.map",
+    "index.html": "/bloody-enterprise-quiz/index.html",
+    "precache-manifest.7d66793c10caa7d018fbf1b3dc98c895.js": "/bloody-enterprise-quiz/precache-manifest.7d66793c10caa7d018fbf1b3dc98c895.js",
+    "service-worker.js": "/bloody-enterprise-quiz/service-worker.js",
+    "static/js/2.77461ae6.chunk.js.LICENSE.txt": "/bloody-enterprise-quiz/static/js/2.77461ae6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0f9e17d1.js",
+    "static/js/runtime-main.3962db08.js",
     "static/js/2.77461ae6.chunk.js",
     "static/js/main.9d2beb83.chunk.js"
   ]
