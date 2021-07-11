@@ -39,7 +39,7 @@ export default function IntroPage() {
 				</Grid>	
 
                 <Grid item>
-					<Button variant="outlined" color="primary" href="/quiz">Начать</Button>
+					<Button variant="outlined" color="primary" href="#/quiz">Начать</Button>
 				</Grid>
 
 			</Grid>

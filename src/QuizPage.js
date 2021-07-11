@@ -10,7 +10,6 @@ import { Redirect } from 'react-router';
 export default function QuizzPage(props) {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0)
 	const [currentAnswerIndex, setCurrentAnswerIndex] = useState(-1)
 
@@ -23,9 +22,8 @@ export default function QuizzPage(props) {
 		const nextQeustion = currentQuestion + 1;
 		if (nextQeustion < questions.length) {
 			setCurrentQuestion(nextQeustion)
-		} else {
-			setShowScore(true)
 		}
+
 		setCurrentAnswerIndex(-1)
 	}
 
@@ -33,6 +31,10 @@ export default function QuizzPage(props) {
 	  const handleAnswerChange = (event) => {
 		setCurrentAnswerIndex(event.target.value)
 	  };
+
+    function isTheLastQuestion() {
+        return currentQuestion + 1 === questions.length
+    }  
 
 	return (
 		<Grid
@@ -57,15 +59,11 @@ export default function QuizzPage(props) {
 				</Grid>	
 
 				<Grid item>
-					{showScore ? (
-						 <Redirect to="/score"/>
-					) : (
-						<AnswersGroup 
-							onChange={handleAnswerChange}
-							answers={questions[currentQuestion].answerOptions}
-							currentAnswerIndex={currentAnswerIndex}
-						/>
-					)}
+                    <AnswersGroup 
+                        onChange={handleAnswerChange}
+                        answers={questions[currentQuestion].answerOptions}
+                        currentAnswerIndex={currentAnswerIndex}
+                    />
 				</Grid>	
 
 				<Grid item>
@@ -77,7 +75,11 @@ export default function QuizzPage(props) {
 
 				<Grid item>
 					{currentAnswerIndex !== -1 ? (
-						<Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+                        !isTheLastQuestion() ? (
+						    <Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий вопрос</Button>
+                        ) : (
+                            <Button variant="outlined" color="primary" href="#/score">Результаты</Button>
+                        )
 						) : (<></>) 
 					}
 				</Grid>

@@ -2,7 +2,7 @@
   "name": "bloody-enterprise-quiz",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://stringconcat/.github.io/{bloody-enterprise-quiz",
+  "homepage": "https://stringconcat.github.io/bloody-enterprise-quiz/",
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "react-scripts build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
