@@ -14,6 +14,7 @@ import Footer from './layout/Footer';
 import QuizzPage from './pages/QuizPage';
 import IntroPage from './pages/IntroPage';
 import ScorePage from './pages/ScorePage';
+import VerticalLinearStepper from './quiz/ScoreStepper';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,13 +44,16 @@ export default function App() {
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
 							<Route path="/quiz">
-							<QuizzPage updateScore={setScore} />
+							<	QuizzPage updateScore={setScore} />
 							</Route>
 							<Route path="/score">
-							<ScorePage score={score} maximum={32}/>
+								<ScorePage score={score} maximum={32}/>
+							</Route>
+							<Route path="/score2">
+								<VerticalLinearStepper></VerticalLinearStepper>
 							</Route>
 							<Route exactPath="/">
-							<IntroPage />
+								<IntroPage />
 							</Route>
 						</Switch>
 					</Router>

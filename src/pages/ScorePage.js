@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import ScoreStepper from '../quiz/ScoreStepper';
 
 export default function ScorePage(props) {
 
@@ -19,42 +20,7 @@ export default function ScorePage(props) {
                 Вы набрали {props.score} из {props.maximum}
             </Grid>
             <Grid item>
-            <>
-                <Typography variant="body" gutterBottom>
-                    <p>
-                        <b>От 25 баллов и выше</b><br/>
-                        Элита. Можно смело устраиваться. Если не наврали, работать будет комфортно.
-                    </p> 
-
-                    <p>
-                        <b>18–24 баллов</b><br/>
-                        Очень хорошая команда. Стоит рассматривать, даже если предлагают чуть ниже рынка.
-                    </p>
-
-                    <p>
-                        <b>18–24 баллов</b><br/>
-                        Очень хорошая команда. Стоит рассматривать, даже если предлагают чуть ниже рынка.
-                    </p>
-
-                    
-                    <p>
-                        <b>13–17 баллов</b><br/>
-                        Хорошая команда. Комфортные условия, возможность чему-то научиться и привнести своего.
-                    </p>
-
-
-                    <p>
-                        <b>17–12 баллов</b><br/>
-                        Важно понять, входят ли проблемы в вашу зону ответственности. Если не входят, просить выше среднего по рынку. Если вы сможете повлиять на проблемы и понравился коллектив, можно пробовать.
-                    </p>
-
-                    <p>
-                        <b>Ниже 7 баллов</b><br/>
-                        Бежать.<br/>
-                        Если компания небольшая и вы уверены в своих силах реформатора, можно попробовать.
-                    </p>
-                </Typography>
-                </>
+                <ScoreStepper score = {props.score}></ScoreStepper>
             </Grid>	
 
             <Grid item>
