@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "42ff3e7bffd358613cd5f12674ec8ffb",
+    "revision": "9b06ceff30f1afa837f5383af8c03b4c",
     "url": "/bloody-enterprise-quiz/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bloody-enterprise-quiz/static/js/2.30ed3fbb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b6fe01b63824b4a124e5",
-    "url": "/bloody-enterprise-quiz/static/js/main.ca42cf7b.chunk.js"
+    "revision": "c88ca41d4402405e9215",
+    "url": "/bloody-enterprise-quiz/static/js/main.ed3f28d8.chunk.js"
   },
   {
     "revision": "48f1426f40055fdff23d",
