@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3f76dbecb55f13cdabb71f484bada582",
+    "revision": "730935ebf5cedc6f6d62e8b46bee584f",
     "url": "/bloody-enterprise-quiz/index.html"
   },
   {
