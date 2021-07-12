@@ -1,7 +1,7 @@
 {
   "name": "bloody-enterprise-quiz",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://stringconcat.github.io/bloody-enterprise-quiz/",
   "dependencies": {
     "@material-ui/core": "^4.12.1",
