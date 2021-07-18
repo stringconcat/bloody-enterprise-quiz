@@ -15,7 +15,7 @@ export default function SingleAnswerGroup(props) {
                             <FormControlLabel
                                 key={index.toString()}
                                 value={index.toString()}
-                                control={<Radio color={answerOption.score > 0 ? "primary" : "secondary"}/>}
+                                control={<Radio color={answerOption.correct? "primary" : "secondary"}/>}
                                 label={answerOption.answerText}
                             />
                     )

@@ -31,17 +31,30 @@ const questionnarieFixture = [
         ],
         description: 'another long description'
     },
+    {
+        questionText: '3rd question',
+        answerOptions: [
+            { answerText: 'Задачи обсуждаются с Dev, QA или BA', score: 2 },
+            { answerText: 'Зачем их прорабатывать, взял и сделал', score: 0 }
+        ],
+        description: 'another long description'
+    },
 ]
 
-test("if we call next question first time then first question should be given", () => {
+test("if we call current question first time then the first question should be given", () => {
     let questionnaire = new Questionnaire(questionnarieFixture)
-    expect(questionnaire.nextQuestion().questionText()).toBe('Do you overtime?')
+    expect(questionnaire.currentQuestion().questionText()).toBe('Do you overtime?')
 })
 
-test("if we call next question second time then second question should be given", () => {
+test("if we call next question first time then second question should be given", () => {
+    let questionnaire = new Questionnaire(questionnarieFixture)
+    expect(questionnaire.nextQuestion().questionText()).toBe('second question')
+})
+
+test("if we call next question second time then 3rd question should be given", () => {
     let questionnaire = new Questionnaire(questionnarieFixture)
     questionnaire.nextQuestion()
-    expect(questionnaire.nextQuestion().questionText()).toBe('second question')
+    expect(questionnaire.nextQuestion().questionText()).toBe('3rd question')
 })
 
 test(
@@ -63,7 +76,7 @@ test(
 test(
     "if all the answers are correct then score should be 4", () => {
         let questionnaire = new Questionnaire(questionnarieFixture)
-        questionnaire.nextQuestion().giveAnswer(3)
+        questionnaire.currentQuestion().giveAnswer(3)
         questionnaire.nextQuestion().giveAnswer(0)
         expect(questionnaire.score()).toBe(4)
     }
@@ -72,7 +85,7 @@ test(
 test(
     "if only second answer is correct then score should be 2", () => {
         let questionnaire = new Questionnaire(questionnarieFixture)
-        questionnaire.nextQuestion().giveAnswer(2)
+        questionnaire.currentQuestion().giveAnswer(2)
         questionnaire.nextQuestion().giveAnswer(0)
         expect(questionnaire.score()).toBe(2)
     }
@@ -81,8 +94,8 @@ test(
 test(
     "answers are memorized", () => {
         let questionnaire = new Questionnaire(questionnarieFixture)
-        questionnaire.nextQuestion().giveAnswer(2)
+        questionnaire.currentQuestion().giveAnswer(2)
         questionnaire.nextQuestion().giveAnswer(0)
-        expect(questionnaire.questions[0]._givenAnswerIndex).toBe(2)
+        expect(questionnaire.questions[0].givenAnswerIndex).toBe(2)
     }
 )

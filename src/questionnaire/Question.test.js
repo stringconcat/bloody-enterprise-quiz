@@ -1,6 +1,6 @@
 import Question from "./Question";
 
-const questionFixture =             {
+const questionFixture = {
     questionText: 'Do you overtime?',
     answerOptions: [
         {
@@ -43,9 +43,9 @@ test(
 
 test(
     "if given answer score is zero then 0 should be returned", () => {
-                let question = new Question(questionFixture, 0)
-                question.giveAnswer(2)
-                expect(question.score()).toBe(0)
+        let question = new Question(questionFixture, 0)
+        question.giveAnswer(2)
+        expect(question.score()).toBe(0)
     }
 )
 
@@ -54,5 +54,12 @@ test(
         let question = new Question(questionFixture, 0)
         question.giveAnswer(3)
         expect(question.score()).toBe(2)
+    }
+)
+
+test(
+    "if no answer given 0 should be returned", () => {
+        let question = new Question(questionFixture, 0)
+        expect(question.score()).toBe(0)
     }
 )

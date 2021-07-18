@@ -1,7 +1,7 @@
 export default class Question {
 
     _struct
-    _givenAnswerIndex
+    givenAnswerIndex=null
     questionIndex
 
     constructor(questionStructure, questionIndex) {
@@ -18,10 +18,15 @@ export default class Question {
     }
 
     giveAnswer = (index) => {
-        this._givenAnswerIndex = index
+        return {...this, givenAnswerIndex: index}
     }
 
-    score = () => this._struct['answerOptions'][this._givenAnswerIndex].score
+    answerHasBeenGiven= this.givenAnswerIndex !== null
+
+    score = () => {
+        if (this.givenAnswerIndex === null) return 0
+        return this._struct['answerOptions'][this.givenAnswerIndex].score
+    }
 
     currentQuestionNumber = () => this.questionIndex + 1
 
@@ -29,6 +34,6 @@ export default class Question {
         this._struct.answerOptions
             .map(answer => ({
                 answerText: answer.answerText,
-                correct: answer.score() > 0
+                correct: answer.score > 0
             }))
 }

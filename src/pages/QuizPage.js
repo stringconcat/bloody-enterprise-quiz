@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import {questions} from '../Questions';
 import DescriptionBox from '../quiz/DescriptionBox';
 import QuestionBox from '../quiz/QuestionBox';
 import SingleAnswerGroup from '../quiz/SingleAnswerGroup';
@@ -9,44 +8,35 @@ import MultiAnswerGroup from '../quiz/MultiAnswerGroup';
 
 export default function QuizzPage(props) {
 
-    const [currentQuestionIndex, setCurrentQuestion] = useState(0);
-    const [currentAnswerIndex, setCurrentAnswerIndex] = useState(-1)
+
+    const [currentQuestion, setCurrentQuestion] = useState(props.questionnaire.currentQuestion())
 
     const handleNextQuestionButton = () => {
-        const currentAnswerScore = questions[currentQuestionIndex].answerOptions[currentAnswerIndex].score
-        props.updateScore(currentAnswerScore)
-
-        if (!isTheLastQuestion(currentQuestionIndex)) {
-            setCurrentQuestion(currentQuestionIndex + 1)
-        }
-
-        setCurrentAnswerIndex(-1)
+        setCurrentQuestion(props.questionnaire.nextQuestion())
     }
-
 
     const handleAnswerChange = (event) => {
-        setCurrentAnswerIndex(event.target.value)
+        // currentQuestion.giveAnswer(event.target.value)
+        setCurrentQuestion(
+            currentQuestion.giveAnswer(event.target.value)
+        )
     };
-
-    function isTheLastQuestion() {
-        return currentQuestionIndex + 1 === questions.length
-    }
 
     return (
         <>
             <Grid item>
                 <QuestionBox
-                    text={questions[currentQuestionIndex].questionText}
-                    currentIndex={currentQuestionIndex}
-                    totalQuestions={questions.length}
+                    text={currentQuestion.questionText()}
+                    currentIndex={currentQuestion.currentQuestionNumber()}
+                    totalQuestions={props.questionnaire.totalQuestions()}
                 />
             </Grid>
 
             <Grid item>
                 <SingleAnswerGroup
                     onChange={handleAnswerChange}
-                    answers={questions[currentQuestionIndex].answerOptions}
-                    currentAnswerIndex={currentAnswerIndex}
+                    answers={currentQuestion.answers()}
+                    currentAnswerIndex={currentQuestion.givenAnswerIndex}
                 />
                 {/*<MultiAnswerGroup*/}
                 {/*	onChange={handleAnswerChange}*/}
@@ -56,15 +46,15 @@ export default function QuizzPage(props) {
             </Grid>
 
             <Grid item>
-                {currentAnswerIndex !== -1 ? (
-                    <DescriptionBox description={questions[currentQuestionIndex].description}/>
+                {currentQuestion.answerHasBeenGiven? (
+                    <DescriptionBox description={currentQuestion.description()}/>
                 ) : (<></>)
                 }
             </Grid>
 
             <Grid item>
-                {currentAnswerIndex !== -1 ? (
-                    !isTheLastQuestion() ? (
+                {currentQuestion.answerHasBeenGiven ? (
+                    !props.questionnaire.isTheLastQuestion() ? (
                         <Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий
                             вопрос</Button>
                     ) : (

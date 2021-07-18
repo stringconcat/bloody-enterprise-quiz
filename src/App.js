@@ -1,20 +1,15 @@
 import React, {useState} from 'react';
-import {
-	HashRouter as Router,
-	Switch,
-	Route,
-  } from "react-router-dom";
+import {HashRouter as Router, Route, Switch,} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Footer from './layout/Footer';  
-
-
+import Footer from './layout/Footer';
 import QuizzPage from './pages/QuizPage';
 import IntroPage from './pages/IntroPage';
 import ScorePage from './pages/ScorePage';
-import VerticalLinearStepper from './quiz/ScoreStepper';
+import Questionnaire from "./questionnaire/Questionnaire";
+import {questions} from "./Questions";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 	},
   }));
 
+const questionList = new Questionnaire(questions)
 
 export default function App() {
 
@@ -48,7 +44,7 @@ export default function App() {
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
 							<Route path="/quiz">
-								<QuizzPage updateScore={changeScoreBy} />
+								<QuizzPage questionnaire={questionList} updateScore={changeScoreBy} />
 							</Route>
 							<Route path="/score">
 								<ScorePage score={score} maximum={34}/>

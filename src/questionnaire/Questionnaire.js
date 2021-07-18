@@ -2,7 +2,7 @@ import Question from "./Question";
 
 export default class Questionnaire {
 
-    _currentQuestionIndex = -1
+    _currentQuestionIndex = 0
     questions = []
 
     constructor(questionnaireStruct) {
@@ -14,6 +14,10 @@ export default class Questionnaire {
         this._currentQuestionIndex++
         return this.questions[this._currentQuestionIndex]
     }
+
+    currentQuestion = () => this.questions[this._currentQuestionIndex]
+
+    totalQuestions= () => this.questions.length
 
     score = () => this.questions
         .map(question => question.score())
