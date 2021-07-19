@@ -5,29 +5,48 @@ import DescriptionBox from '../quiz/DescriptionBox';
 import QuestionBox from '../quiz/QuestionBox';
 import SingleAnswerGroup from '../quiz/SingleAnswerGroup';
 import MultiAnswerGroup from '../quiz/MultiAnswerGroup';
+import {
+    useLocation
+} from "react-router-dom";
 
 export default function QuizzPage(props) {
 
+    const location = useLocation();
 
-    const [currentQuestion, setCurrentQuestion] = useState(props.questionnaire.currentQuestion())
-
-    const handleNextQuestionButton = () => {
-        setCurrentQuestion(props.questionnaire.nextQuestion())
+    const createState= ()=> {
+        let query = new URLSearchParams(location.search)
+        let questionIndex=query.get("question")||1
+        let currentQuestion=props.questionnaire.switchToQuestion(questionIndex-1);
+        return {
+            text: currentQuestion.questionText(),
+            number: currentQuestion.currentQuestionNumber(),
+            description: currentQuestion.description(),
+            answers: currentQuestion.answers(),
+            givenAnswerIndex: currentQuestion.givenAnswerIndex,
+            isTheLastQuestion: props.questionnaire.isTheLastQuestion(),
+            nextQuestionIndex: currentQuestion.currentQuestionNumber()+1
+        }
     }
+
+    const [question, setQuestion]= useState(createState())
+
+
+    React.useEffect(() => {
+        setQuestion(createState())
+    }, [location]);
 
     const handleAnswerChange = (event) => {
         // currentQuestion.giveAnswer(event.target.value)
-        setCurrentQuestion(
-            currentQuestion.giveAnswer(event.target.value)
-        )
+        props.questionnaire.currentQuestion().giveAnswer(event.target.value)
+        setQuestion({...question, givenAnswerIndex: event.target.value})
     };
 
     return (
         <>
             <Grid item>
                 <QuestionBox
-                    text={currentQuestion.questionText()}
-                    currentIndex={currentQuestion.currentQuestionNumber()}
+                    text={question.text}
+                    currentIndex={question.number}
                     totalQuestions={props.questionnaire.totalQuestions()}
                 />
             </Grid>
@@ -35,8 +54,8 @@ export default function QuizzPage(props) {
             <Grid item>
                 <SingleAnswerGroup
                     onChange={handleAnswerChange}
-                    answers={currentQuestion.answers()}
-                    currentAnswerIndex={currentQuestion.givenAnswerIndex}
+                    answers={question.answers}
+                    currentAnswerIndex={question.givenAnswerIndex}
                 />
                 {/*<MultiAnswerGroup*/}
                 {/*	onChange={handleAnswerChange}*/}
@@ -46,16 +65,20 @@ export default function QuizzPage(props) {
             </Grid>
 
             <Grid item>
-                {currentQuestion.answerHasBeenGiven? (
-                    <DescriptionBox description={currentQuestion.description()}/>
+                {question.givenAnswerIndex !== null? (
+                    <DescriptionBox description={question.description}/>
                 ) : (<></>)
                 }
             </Grid>
 
             <Grid item>
-                {currentQuestion.answerHasBeenGiven ? (
+                {question.givenAnswerIndex !== null ? (
                     !props.questionnaire.isTheLastQuestion() ? (
-                        <Button variant="outlined" color="primary" onClick={() => handleNextQuestionButton()}>Следующий
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            href={'#/quizz?question='+ question.nextQuestionIndex}
+                        >Следующий
                             вопрос</Button>
                     ) : (
                         <Button variant="outlined" color="primary" href="#/score">Результаты</Button>

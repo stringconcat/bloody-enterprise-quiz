@@ -15,6 +15,15 @@ export default class Questionnaire {
         return this.questions[this._currentQuestionIndex]
     }
 
+    switchToQuestion(questionIndex) {
+        this._currentQuestionIndex = questionIndex
+        return this.currentQuestion()
+    }
+
+    nextQuestionIndex= ()=> {
+        return this._currentQuestionIndex + 1
+    }
+
     currentQuestion = () => this.questions[this._currentQuestionIndex]
 
     totalQuestions= () => this.questions.length

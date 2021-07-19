@@ -43,7 +43,7 @@ export default function App() {
 				<Grid container spacing={2} direction="column" justifyContent="flex-start" alignItems="stretch">
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
-							<Route path="/quiz">
+							<Route path="/quiz*">
 								<QuizzPage questionnaire={questionList} updateScore={changeScoreBy} />
 							</Route>
 							<Route path="/score">
