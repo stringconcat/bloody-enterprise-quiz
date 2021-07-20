@@ -1,6 +1,7 @@
 export const questions = [
     {
         questionText: 'Как команда собирает требования?',
+        type: 'single',
         answerOptions: [
             { 
                 answerText: 'Применяем водопадную модель. Аналитики анализируют весь проект наперед ', 
@@ -36,6 +37,7 @@ export const questions = [
     },
     {
         questionText: 'Как прорабатываются задачи перед уходом в разработку?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Задачи обсуждаются с Dev, QA или BA', score: 2 },
             { answerText: 'Зачем их прорабатывать, взял и сделал', score: 0 }
@@ -62,6 +64,7 @@ export const questions = [
     },
     {
         questionText: 'Как фиксируются принятые архитектурные решения',
+        type: 'single',
         answerOptions: [
             { answerText: 'В Architectural Decision Record фиксируются все «Почему» ', score: 2 },
             { answerText: 'В таск-трекере заводят задачи, в которых расписаны все «Как». Например, прикрутить kafka', score: 0 },
@@ -88,6 +91,7 @@ export const questions = [
     },
     {
         questionText: 'Можно ли начать полноценно разрабатывать в первый же рабочий день?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Да, команда выдаст доступы, можно тут же развернуть и запустить проект ', score: 2 },
             { answerText: 'Нет, весь первый день уйдёт на бумажки и получение доступов', score: 0 },
@@ -116,6 +120,7 @@ export const questions = [
     },
     {
         questionText: 'Получится ли комфортно работать с личного ноута на необитаемом острове, где есть только 3G',
+        type: 'single',
         answerOptions: [
             { answerText: 'Да, но, возможно, первый билд пройдёт немного болезненно', score: 2 },
             { answerText: 'В принципе да, но будут проблемы', score: 1 },
@@ -137,6 +142,7 @@ export const questions = [
     },
     {
         questionText: 'Можно ли локально запустить кластер, состоящий из большинства разрабатываемых приложений и прогнать на нём e2e-тесты',
+        type: 'single',
         answerOptions: [
             { answerText: 'Он запускается одной кнопкой (одним bash-скриптом) ', score: 2 },
             { answerText: 'Можно, но нужно стартовать и настраивать каждое приложение', score: 1 },
@@ -159,6 +165,7 @@ export const questions = [
     },
     {
         questionText: 'Как быстро коммит по рядовой задаче окажется на Проде?',
+        type: 'single',
         answerOptions: [
             { answerText: 'К концу дня', score: 2 },
             { answerText: 'К концу итерации ', score: 1 },
@@ -174,6 +181,7 @@ export const questions = [
     },
     {
         questionText: 'Что можно пропустить, когда дедлайн уже близок',
+        type: 'single',
         answerOptions: [
             { answerText: 'Написание Unit-тестов', score: 0 },
             { answerText: 'Написание e2e-тестов ', score: 0 },
@@ -188,6 +196,7 @@ export const questions = [
     },
     {
         questionText: 'Как прорабатывается графический интерфейс приложения?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Над ним работает UX-дизайнер, имплементируют разработчики', score: 2 },
             { answerText: 'Фронтенд-разработчики раскидывают кнопки и инпуты, получается ок ', score: 0 },
@@ -209,6 +218,7 @@ export const questions = [
     },
     {
         questionText: 'Как точнее всего описывается архитектура проекта?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Через инструменты. Например, «REST сервисы на Spring Boot, на беке у нас hibernate c PostgreSQL»', score: 0 },
             { answerText: 'Через контексты бизнеса и модули. Например, «сервис с распределенной архитектурой и асинхронной обработкой сообщений, поскольку разные пользователи и сценарии чувствительны к разным архитектурным характеристикам» ', score: 2 },
@@ -226,6 +236,7 @@ export const questions = [
     },
     {
         questionText: 'Работа с техническим долгом',
+        type: 'single',
         answerOptions: [
             { answerText: 'Бэклог приоритезирован, пополняется ежедневно. Технический долг считается first class citizens ', score: 2 },
             { answerText: 'Задачами из технического бэклога занимаются после задач бизнеса, когда в спринте остаются пустые места', score: 1 },
@@ -239,6 +250,7 @@ export const questions = [
     },
     {
         questionText: 'Насколько здорова пирамида тестирования?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Образцовая. Обширная база unit-тестов, применение TDD, интеграционных тестов, e2e и немного behavior-тестов', score: 2 },
             { answerText: 'Песочные часы. Много Unit, много behavior-тестов, которые написаны QA, а в середине почти пусто', score: 1 },
@@ -256,6 +268,7 @@ export const questions = [
     },
     {
         questionText: 'Чем занимаются тестировщики?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Анализируют задачи перед принятием в работу, находят в задаче edge cases ещё до начала разработки, могут разрабатывать наравне с программистами', score: 2 },
             { answerText: 'Ручным тестированием перед релизом', score: 0 },
@@ -306,6 +319,7 @@ export const questions = [
     },
     {
         questionText: 'Используется ли TDD?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Да, продакшн-код пишется после тестов для него. На написание теста уходит 2–3 минуты', score: 2 },
             { answerText: 'Покрытие тестами идёт отдельной задачей ', score: 0 },
@@ -320,6 +334,7 @@ export const questions = [
     },
     {
         questionText: 'Сколько часов команда переработала за последний месяц?',
+        type: 'single',
         answerOptions: [
             { answerText: 'Никаких переработок', score: 2 },
             { answerText: 'Пришлось немного поднапрячься к концу проекта', score: 0 },
@@ -351,6 +366,7 @@ export const questions = [
     },
     {
         questionText: 'Как команда узнает о проблемах на проде?',
+        type: 'single',
         answerOptions: [
             { answerText: 'От менеджера, который прочитал о падении сервиса в твиттере конкурентов', score: 0 },
             { answerText: 'Из мониторинга, задолго до того, как основная часть пользователей что-то заметит ', score: 2 },

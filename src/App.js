@@ -30,12 +30,6 @@ export default function App() {
 
 	const classes = useStyles();
 
-	const [score, setScore] = useState(0)
-
-	const changeScoreBy = (number) => {
-		setScore(score+number)
-	}
-
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -44,10 +38,10 @@ export default function App() {
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
 							<Route path="/quiz*">
-								<QuizzPage questionnaire={questionList} updateScore={changeScoreBy} />
+								<QuizzPage questionnaire={questionList} />
 							</Route>
 							<Route path="/score">
-								<ScorePage score={score} maximum={34}/>
+								<ScorePage score={questionList.score()} maximum={34}/>
 							</Route>
 							<Route exactPath="/">
 								<IntroPage />

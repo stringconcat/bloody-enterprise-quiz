@@ -19,10 +19,11 @@ export default function QuizzPage(props) {
         let currentQuestion=props.questionnaire.switchToQuestion(questionIndex-1);
         return {
             text: currentQuestion.questionText(),
+            type: currentQuestion.type(),
             number: currentQuestion.currentQuestionNumber(),
             description: currentQuestion.description(),
             answers: currentQuestion.answers(),
-            givenAnswerIndex: currentQuestion.givenAnswerIndex,
+            givenAnswerIndex: currentQuestion.givenAnswerIndex(),
             isTheLastQuestion: props.questionnaire.isTheLastQuestion(),
             nextQuestionIndex: currentQuestion.currentQuestionNumber()+1
         }
@@ -30,16 +31,26 @@ export default function QuizzPage(props) {
 
     const [question, setQuestion]= useState(createState())
 
-
     React.useEffect(() => {
         setQuestion(createState())
     }, [location]);
 
     const handleAnswerChange = (event) => {
-        // currentQuestion.giveAnswer(event.target.value)
         props.questionnaire.currentQuestion().giveAnswer(event.target.value)
         setQuestion({...question, givenAnswerIndex: event.target.value})
+        console.log("score: "+props.questionnaire.score())
     };
+
+    const handleAnswerCheckBoxChange= (event)=> {
+        let answersCopy= question.givenAnswerIndex.slice()
+        answersCopy[event.target.name]= event.target.checked
+        setQuestion({
+            ...question,
+            givenAnswerIndex: answersCopy
+        })
+        props.questionnaire.currentQuestion().giveAnswer(answersCopy)
+        console.log("score: "+props.questionnaire.score())
+    }
 
     return (
         <>
@@ -52,16 +63,20 @@ export default function QuizzPage(props) {
             </Grid>
 
             <Grid item>
-                <SingleAnswerGroup
-                    onChange={handleAnswerChange}
-                    answers={question.answers}
-                    currentAnswerIndex={question.givenAnswerIndex}
-                />
-                {/*<MultiAnswerGroup*/}
-                {/*	onChange={handleAnswerChange}*/}
-                {/*	answers={questions[currentQuestionIndex].answerOptions}*/}
-                {/*	currentAnswerIndex={currentAnswerIndex}*/}
-                {/*/>*/}
+                {question.type === "single" ? (
+                    <SingleAnswerGroup
+                        onChange={handleAnswerChange}
+                        answers={question.answers}
+                        currentAnswerIndex={question.givenAnswerIndex}
+                    />
+                ) : (
+                    <MultiAnswerGroup
+                        onChange={handleAnswerCheckBoxChange}
+                        answers={question.answers}
+                        currentAnswer={question.givenAnswerIndex}
+                    />
+                )
+                }
             </Grid>
 
             <Grid item>

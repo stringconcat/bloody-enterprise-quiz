@@ -1,4 +1,5 @@
 import Question from "./Question";
+import MultiQuestion from "./MultiQuestion";
 
 export default class Questionnaire {
 
@@ -7,7 +8,15 @@ export default class Questionnaire {
 
     constructor(questionnaireStruct) {
         this.questions = questionnaireStruct
-            .map((question, index) => new Question(question, index))
+            .map((question, index) => this.createQuestion(question, index))
+    }
+
+    createQuestion=(question, index)=> {
+        if (question.type === "single") {
+            return new Question(question, index)
+        } else {
+            return new MultiQuestion(question, index)
+        }
     }
 
     nextQuestion = () => {

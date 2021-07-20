@@ -1,7 +1,7 @@
-export default class Question {
+export default class MultiQuestion {
 
     _struct
-    _givenAnswerIndex=null
+    _givenAnswerIndex=[false, false, false, false]
     questionIndex
 
     constructor(questionStructure, questionIndex) {
@@ -22,7 +22,7 @@ export default class Question {
     }
 
     giveAnswer = (index) => {
-        this._givenAnswerIndex = index
+        this._givenAnswerIndex=index
     }
 
     givenAnswerIndex= ()=>  {
@@ -33,7 +33,10 @@ export default class Question {
 
     score = () => {
         if (this._givenAnswerIndex === null) return 0
-        return this._struct['answerOptions'][this._givenAnswerIndex].score
+
+        return this._struct['answerOptions']
+            .map((answerOption, index) => this._givenAnswerIndex[index]===true? answerOption.score:0)
+            .reduce((a, b)=> a+b)
     }
 
     currentQuestionNumber = () => this.questionIndex + 1

@@ -6,12 +6,6 @@ import {Checkbox} from '@material-ui/core';
 
 export default function MultiAnswerGroup(props) {
 
-    const [state, setState] = React.useState({});
-
-    const handleChange = (event) => {
-        setState({...state, [event.target.name]: event.target.checked});
-    };
-
     return (
         <FormControl component="fieldset">
             <FormGroup>
@@ -22,8 +16,9 @@ export default function MultiAnswerGroup(props) {
                                 value={index.toString()}
                                 control={
                                     <Checkbox
-                                        checked={state.index}
-                                        onChange={handleChange}
+                                        checked={props.currentAnswer[index]}
+                                        onChange={props.onChange}
+                                        name={index}
                                         color={answerOption.score > 0 ? "primary" : "secondary"}
                                     />
                                 }
