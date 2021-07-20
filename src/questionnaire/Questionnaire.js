@@ -1,5 +1,6 @@
 import Question from "./Question";
 import MultiQuestion from "./MultiQuestion";
+import {questions} from "../Questions";
 
 export default class Questionnaire {
 
@@ -39,7 +40,11 @@ export default class Questionnaire {
 
     score = () => this.questions
         .map(question => question.score())
-        .reduce((a, b) => a+b)
+        .reduce((a, b) => a+b);
 
-    isTheLastQuestion = () => this._currentQuestionIndex + 1 === this.questions.length
+    isTheLastQuestion = () => this._currentQuestionIndex + 1 === this.questions.length;
+
+    reset=()=> {
+        this.questions.forEach(question => question.resetAnswer())
+    }
 }

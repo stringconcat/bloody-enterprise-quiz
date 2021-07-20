@@ -33,7 +33,7 @@ export default function ScorePage(props) {
                         на следующую ступень</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Button variant="outlined" href='#/quiz'>Пройти тест заново</Button>
+                    <Button variant="outlined" href='#/quiz?reset'>Пройти тест заново</Button>
                 </Grid>
             </Grid>
         </>

@@ -63,3 +63,13 @@ test(
         expect(question.score()).toBe(0)
     }
 )
+
+test(
+    "when reset answer triggered there is no answer selected", ()=>{
+        let question = new Question(questionFixture, 0)
+        question.giveAnswer(3)
+        question.resetAnswer()
+        expect(question.givenAnswerIndex()).toBe(null)
+        expect(question.score()).toBe(0)
+    }
+)

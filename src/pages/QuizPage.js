@@ -15,6 +15,10 @@ export default function QuizzPage(props) {
 
     const createState= ()=> {
         let query = new URLSearchParams(location.search)
+        if (query.has("reset")) {
+            props.questionnaire.reset()
+        }
+
         let questionIndex=query.get("question")||1
         let currentQuestion=props.questionnaire.switchToQuestion(questionIndex-1);
         return {
@@ -53,6 +57,7 @@ export default function QuizzPage(props) {
         // console.log("score: "+props.questionnaire.score())
         props.onScoreUpdated()
     }
+
 
     return (
         <>

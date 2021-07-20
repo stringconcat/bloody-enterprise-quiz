@@ -1,4 +1,5 @@
 import MultiQuestion from "./MultiQuestion";
+import Question from "./Question";
 
 const questionFixture = {
     questionText: 'При каких условиях свалится локальный билд?',
@@ -32,5 +33,15 @@ test(
         let question = new MultiQuestion(questionFixture, 0)
         question.giveAnswer([true, true, false, false])
         expect(question.score()).toBe(1)
+    }
+)
+
+test(
+    "when reset answer triggered there is no answer selected", ()=>{
+        let question = new MultiQuestion(questionFixture, 0)
+        question.giveAnswer([true, true])
+        question.resetAnswer()
+        expect(question.givenAnswerIndex()).toStrictEqual([false, false, false, false])
+        expect(question.score()).toBe(0)
     }
 )

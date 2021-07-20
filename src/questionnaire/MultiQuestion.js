@@ -47,4 +47,8 @@ export default class MultiQuestion {
                 answerText: answer.answerText,
                 correct: answer.score > 0
             }))
+
+    resetAnswer=()=>{
+        this._givenAnswerIndex=[false, false, false, false];
+    }
 }

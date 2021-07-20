@@ -3,6 +3,7 @@ import Questionnaire from "./Questionnaire";
 const questionnarieFixture = [
     {
         questionText: 'Do you overtime?',
+        type: 'single',
         answerOptions: [
             {
                 answerText: 'Применяем водопадную модель. Аналитики анализируют весь проект наперед ',
@@ -25,6 +26,7 @@ const questionnarieFixture = [
     },
     {
         questionText: 'second question',
+        type: 'single',
         answerOptions: [
             { answerText: 'Задачи обсуждаются с Dev, QA или BA', score: 2 },
             { answerText: 'Зачем их прорабатывать, взял и сделал', score: 0 }
@@ -33,6 +35,7 @@ const questionnarieFixture = [
     },
     {
         questionText: '3rd question',
+        type: 'single',
         answerOptions: [
             { answerText: 'Задачи обсуждаются с Dev, QA или BA', score: 2 },
             { answerText: 'Зачем их прорабатывать, взял и сделал', score: 0 }
@@ -96,6 +99,18 @@ test(
         let questionnaire = new Questionnaire(questionnarieFixture)
         questionnaire.currentQuestion().giveAnswer(2)
         questionnaire.nextQuestion().giveAnswer(0)
-        expect(questionnaire.questions[0].givenAnswerIndex).toBe(2)
+        expect(questionnaire.questions[0].givenAnswerIndex()).toBe(2)
+    }
+)
+
+test(
+    "when reset triggered no given answers saved", () => {
+        let questionnaire = new Questionnaire(questionnarieFixture)
+        questionnaire.currentQuestion().giveAnswer(2)
+        questionnaire.nextQuestion().giveAnswer(0)
+        questionnaire.reset()
+        expect(questionnaire.questions[0].givenAnswerIndex()).toBe(null)
+        expect(questionnaire.questions[1].givenAnswerIndex()).toBe(null)
+        expect(questionnaire.score()).toBe(0)
     }
 )

@@ -44,4 +44,8 @@ export default class Question {
                 answerText: answer.answerText,
                 correct: answer.score > 0
             }))
+
+    resetAnswer=()=>{
+        this._givenAnswerIndex=null;
+    }
 }
