@@ -29,7 +29,7 @@ export default function ScorePage(props) {
 
             <Grid item container spacing={3}>
                 <Grid item xs={12} md={6}>
-                    <Button variant="outlined" color="primary" href="https://howto.stringconcat.com/">Узнать как перейти
+                    <Button variant="outlined" color="primary" href="https://howto.stringconcat.com/?utm_source=bloody">Узнать как перейти
                         на следующую ступень</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
