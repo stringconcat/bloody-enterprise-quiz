@@ -38,7 +38,8 @@ export default function QuizzPage(props) {
     const handleAnswerChange = (event) => {
         props.questionnaire.currentQuestion().giveAnswer(event.target.value)
         setQuestion({...question, givenAnswerIndex: event.target.value})
-        console.log("score: "+props.questionnaire.score())
+        // console.log("score: "+props.questionnaire.score())
+        props.onScoreUpdated()
     };
 
     const handleAnswerCheckBoxChange= (event)=> {
@@ -49,7 +50,8 @@ export default function QuizzPage(props) {
             givenAnswerIndex: answersCopy
         })
         props.questionnaire.currentQuestion().giveAnswer(answersCopy)
-        console.log("score: "+props.questionnaire.score())
+        // console.log("score: "+props.questionnaire.score())
+        props.onScoreUpdated()
     }
 
     return (

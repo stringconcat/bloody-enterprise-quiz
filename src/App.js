@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
-import {HashRouter as Router, Route, Switch,} from "react-router-dom";
+import {
+	HashRouter as Router,
+	Route,
+	Switch,
+	useLocation
+} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {makeStyles} from '@material-ui/core/styles';
@@ -30,6 +35,14 @@ export default function App() {
 
 	const classes = useStyles();
 
+	const [score, setScore]=useState();
+
+	const onScoreUpdated=()=> {
+		let newScore=questionList.score();
+		console.log("score: "+newScore)
+		setScore(newScore)
+	}
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -38,10 +51,10 @@ export default function App() {
 					<Router basename={process.env.PUBLIC_URL}>  
 						<Switch>
 							<Route path="/quiz*">
-								<QuizzPage questionnaire={questionList} />
+								<QuizzPage questionnaire={questionList} onScoreUpdated={onScoreUpdated} />
 							</Route>
 							<Route path="/score">
-								<ScorePage score={questionList.score()} maximum={34}/>
+								<ScorePage score={score} maximum={34}/>
 							</Route>
 							<Route exactPath="/">
 								<IntroPage />
