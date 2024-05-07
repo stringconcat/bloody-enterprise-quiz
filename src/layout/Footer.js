@@ -8,7 +8,7 @@ function Copyright() {
 	return (
 	  <Typography variant="body2" color="textSecondary">
 		{'Copyright © '}
-		<Link color="inherit" href="https://howto.stringconcat.com/">
+		<Link color="inherit" href="https://howto.stringconcat.ru/">
 		  StringConcat
 		</Link>{' '}
 		{new Date().getFullYear()}
