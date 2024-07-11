@@ -1,4 +1,4 @@
-[bloody-enterprise.stringconcat.com](https://bloody-enterprise.stringconcat.com)
+[bloody-enterprise.stringconcat.ru](https://bloody-enterprise.stringconcat.ru)
 
 Starter code for quiz-app beginner react project
 
